@@ -3,16 +3,34 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>News</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+<ion-card>
+  <ion-item>
+    <h3>Résultats Championnat de Bretagne 2017</h3>
+    <p>16/05/2017</p>
+  </ion-item>
+
+  <img src="http://www.cpbrennestt.fr/images/uploads_news/ChjampionnatBretagne2017.jpg">
+
+  <ion-card-content>
+    <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+  </ion-card-content>
+  
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-right clear small>
+        <div>Lire la suite ...</div>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-card>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>
