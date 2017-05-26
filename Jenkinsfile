@@ -8,7 +8,7 @@ node {
     stage('Build') {
 		docker.image('uber/android-build-environment').inside {
 			withEnv(["PATH+NODE=${tool 'NodeJS7'}/bin"]) {
-        		sh 'yarn install'
+        		sh 'npm install'
         	}
     	}
     }
