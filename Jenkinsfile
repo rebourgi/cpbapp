@@ -10,6 +10,8 @@ node {
 		withDockerContainer(image : 'uber/android-build-environment', args: " -u root -v $NODE_PATH:$NODE_PATH") {
 			withEnv(["PATH+NODE=${tool 'NodeJS7'}/bin"]) {
         		sh 'npm install'
+        		sh 'ionic cordova platform add android'
+        		sh 'ionic cordova build android'
         	}
     	}
     }
