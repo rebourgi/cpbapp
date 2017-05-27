@@ -6,13 +6,9 @@ node {
         }
     }
     stage('Build') {
-		docker.image('uber/android-build-environment').inside {
+    	env.NODE_PATH = tool 'NodeJS7'
+		withDockerContainer(image : 'uber/android-build-environment', args: " -u root -v $NODE_PATH:$NODE_PATH") {
 			withEnv(["PATH+NODE=${tool 'NodeJS7'}/bin"]) {
-			   def v = tool 'NodeJS7'
-                echo "Building tool ${v}"
-                sh 'ls /opt/applications/pic/jenkins/home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS7'
-				sh 'id'
-				sh 'uname -a'
         		sh 'npm install'
         	}
     	}
