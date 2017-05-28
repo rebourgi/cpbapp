@@ -18,6 +18,7 @@ node {
         		sh 'ionic cordova platform add android'
         		sh 'ionic cordova build android'
         	}
+        	archiveArtifacts artifacts: 'platforms/android/build/outputs/apk/*.apk'
     	}
     }
 }
