@@ -37,5 +37,5 @@
     "@ionic/cli-plugin-ionic-angular": "1.2.0",
     "typescript": "2.3.3"
   },
-  "description": "An Ionic project"
+  "description": "Mobile App for CPB TT"
 }
