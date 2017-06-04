@@ -18,14 +18,14 @@
   <img *ngIf="news.image != null;" [src]="news.image">
 
   <ion-card-content>
-    <p [innerHTML]="news.content"></p>
+    <p [ngClass]="{'item-expand active': isItemShown(news), 'item-expand inactive': !isItemShown(news)}" [innerHTML]="news.content"></p>
   </ion-card-content>
 
   <ion-row>
     <ion-col>
-      <button ion-button icon-right clear small>
-        <div>Lire la suite ...</div>
-        <ion-icon name="arrow-forward"></ion-icon>
+      <button  ion-button full clear large (click)="toggleNews(news)">
+        <ion-icon *ngIf="!isItemShown(news);" name="arrow-dropdown-circle"></ion-icon>
+        <ion-icon *ngIf="isItemShown(news);" name="arrow-dropup"></ion-icon>
       </button>
     </ion-col>
   </ion-row>

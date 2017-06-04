@@ -19,12 +19,30 @@ export class NewsPage {
 
   public listNews;
 
+  public currentNews;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private newsProvider: NewsProvider, public loadingCtrl: LoadingController) {
     this.getNews();
   }
 
   ionViewDidLoad() {
+  }
+
+
+  toggleNews(news: any) {
+  console.log('ionViewDidLoad NewsPage');
+  console.log('news : '+news);
+    if (this.isItemShown(news)) {
+      this.currentNews = null;
+    } else {
+      this.currentNews = news;
+    }
+  }
+
+  isItemShown(news: any) {
+console.log('ionViewDidLoad NewssssPage');    
+    return this.currentNews === news;
   }
 
   getNews() {
