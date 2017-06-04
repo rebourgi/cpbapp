@@ -29,10 +29,18 @@ export class NewsPage {
   ionViewDidLoad() {
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.newsProvider.getNews().subscribe(
+      data => {
+        this.listNews = data.json();
+      },
+      err => console.error(err),
+      () => { console.log('getRepos completed'), refresher.complete(); }
+    );
+  }
 
   toggleNews(news: any) {
-  console.log('ionViewDidLoad NewsPage');
-  console.log('news : '+news);
     if (this.isItemShown(news)) {
       this.currentNews = null;
     } else {
@@ -41,7 +49,6 @@ export class NewsPage {
   }
 
   isItemShown(news: any) {
-console.log('ionViewDidLoad NewssssPage');    
     return this.currentNews === news;
   }
 

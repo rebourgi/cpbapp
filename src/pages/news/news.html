@@ -8,26 +8,28 @@
 </ion-header>
 
 <ion-content padding>
-
-<ion-card *ngFor="let news of listNews">
-  <ion-item text-wrap color="light">
-    <h3 class="title">{{ news.title }}</h3>
-    <i>{{ news.date | date: 'dd/MM/yyyy' }}</i>
-  </ion-item>
-
-  <img *ngIf="news.image != null;" [src]="news.image">
-
-  <ion-card-content>
-    <p [ngClass]="{'item-expand active': isItemShown(news), 'item-expand inactive': !isItemShown(news)}" [innerHTML]="news.content"></p>
-  </ion-card-content>
-
-  <ion-row>
-    <ion-col>
-      <button  ion-button full clear large (click)="toggleNews(news)">
-        <ion-icon *ngIf="!isItemShown(news);" name="arrow-dropdown-circle"></ion-icon>
-        <ion-icon *ngIf="isItemShown(news);" name="arrow-dropup"></ion-icon>
-      </button>
-    </ion-col>
-  </ion-row>
-</ion-card>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	<ion-card *ngFor="let news of listNews">
+	  <ion-item text-wrap color="light">
+	    <h3 class="title">{{ news.title }}</h3>
+	    <i>{{ news.date | date: 'dd/MM/yyyy' }}</i>
+	  </ion-item>
+	
+	  <img *ngIf="news.image != null;" [src]="news.image">
+	
+	  <ion-card-content>
+	    <p [ngClass]="{'item-expand active': isItemShown(news), 'item-expand inactive': !isItemShown(news)}" [innerHTML]="news.content"></p>
+	  </ion-card-content>
+	
+	  <ion-row>
+	    <ion-col>
+	      <button  ion-button full clear large (click)="toggleNews(news)">
+	        <ion-icon *ngIf="!isItemShown(news);" name="arrow-dropdown-circle"></ion-icon>
+	        <ion-icon *ngIf="isItemShown(news);" name="arrow-dropup"></ion-icon>
+	      </button>
+	    </ion-col>
+	  </ion-row>
+	</ion-card>
 </ion-content>
