@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 import { NewsProvider } from '../../providers/news/news';
 
@@ -18,21 +19,25 @@ export class NewsPage {
 
   public listNews;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private newsProvider: NewsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private newsProvider: NewsProvider, public loadingCtrl: LoadingController) {
     this.getNews();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewsPage');
   }
 
   getNews() {
+    let loader = this.loadingCtrl.create({
+      content: "Loading...",
+    });
+    loader.present();
     this.newsProvider.getNews().subscribe(
       data => {
         this.listNews = data.json();
       },
       err => console.error(err),
-      () => console.log('getRepos completed')
+      () => { console.log('getRepos completed'), loader.dismiss(); }
     );
   }
 
