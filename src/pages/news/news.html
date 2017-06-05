@@ -10,7 +10,9 @@
 	<ion-refresher (ionRefresh)="doRefresh($event)">
 		<ion-refresher-content pullingIcon="sync"></ion-refresher-content>
 	</ion-refresher>
-	<button ion-button block (click)="openModal()">Ajouter news</button>
+	<ion-fab top right edge>
+		<button ion-fab mini (click)="openModal()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
 	<ion-card *ngFor="let news of listNews">
 	  <ion-item text-wrap color="light">
 	    <h3 ion-text color="primary" class="title">{{ news.title }}</h3>
