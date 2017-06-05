@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoadingController } from 'ionic-angular';
+import { LoadingController, IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { NewsProvider } from '../../providers/news/news';
+import { ModalPage } from '../modal/modal';
 
 /**
  * Generated class for the NewsPage page.
@@ -22,7 +22,8 @@ export class NewsPage {
   public currentNews;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private newsProvider: NewsProvider, public loadingCtrl: LoadingController) {
+    private newsProvider: NewsProvider, public loadingCtrl: LoadingController, 
+    public modalCtrl : ModalController) {
     this.getNews();
   }
 
@@ -66,4 +67,8 @@ export class NewsPage {
     );
   }
 
+	openModal(){ 
+		let myModal = this.modalCtrl.create(ModalPage);
+    	myModal.present();
+	}
 }

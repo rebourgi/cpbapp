@@ -8,13 +8,14 @@
 </ion-header>
 <ion-content padding>
 	<ion-refresher (ionRefresh)="doRefresh($event)">
-		<ion-refresher-content></ion-refresher-content>
+		<ion-refresher-content pullingIcon="sync"></ion-refresher-content>
 	</ion-refresher>
+	<button ion-button block (click)="openModal()">Ajouter news</button>
 	<ion-card *ngFor="let news of listNews">
 	  <ion-item text-wrap color="light">
-	    <h3 class="title">{{ news.title }}</h3>
-	    <i>{{ news.date | date: 'dd/MM/yyyy' }}</i>
-	  </ion-item>
+	    <h3 ion-text color="primary" class="title">{{ news.title }}</h3>
+	    <i ion-text color="secondary">{{ news.date | date: 'dd/MM/yyyy' }}</i>
+	</ion-item>
 	
 	  <img *ngIf="news.image != null;" [src]="news.image">
 	

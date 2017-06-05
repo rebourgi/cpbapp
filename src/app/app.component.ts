@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NewsPage } from '../pages/news/news';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { ModalPage } from '../pages/modal/modal';
 
 @Component({
   templateUrl: 'app.html'

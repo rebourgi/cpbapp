@@ -1,0 +1,43 @@
+<ion-header>
+<ion-navbar>
+    <ion-title>Ajouter news</ion-title>
+    <ion-buttons end>
+    <button ion-button (click)="closeModal()">
+   		 <ion-icon name="md-remove-circle" color ="bleu"></ion-icon>
+    </button>
+    </ion-buttons>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-list>
+	  <ion-item>
+		    <ion-label color="primary">Titre</ion-label>
+		    <ion-input placeholder="Tite de la publication"></ion-input>
+	  </ion-item>
+	  <ion-item>
+		    <ion-label color="primary">Date</ion-label>
+		    <ion-datetime></ion-datetime>
+	  </ion-item>
+	  <ion-item>
+		   <!-- TODO : File 
+		   <ion-label color="primary">Joindre image</ion-label>
+		   -->
+		   <input type="file" placeholder="Joindre image" />
+	  </ion-item>
+	  <ion-item>
+		    <ion-label color="primary">Description</ion-label>
+		    <ion-textarea placeholder="Description de la publication"></ion-textarea>
+	  </ion-item>
+</ion-list>
+
+	  <ion-row>
+	    <ion-col>
+	      <button  ion-button full clear large (click)="closeModal()">
+	        <ion-icon  name="md-checkbox"></ion-icon>
+	      </button>
+	    </ion-col>
+	  </ion-row>
+</ion-content>
+
+
