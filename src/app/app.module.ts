@@ -13,6 +13,7 @@ import { ModalPage } from '../pages/modal/modal';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NewsProvider } from '../providers/news/news';
+import { AppVersion } from '@ionic-native/app-version';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NewsProvider } from '../providers/news/news';
   ],
   providers: [
     StatusBar,
+    AppVersion,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NewsProvider
