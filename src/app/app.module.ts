@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ModalPage } from '../pages/modal/modal';
+import { AgendaPage } from '../pages/agenda/agenda';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,7 +21,8 @@ import { NewsProvider } from '../providers/news/news';
     HomePage,
     ListPage,
     NewsPage, 
-    ModalPage
+    ModalPage,
+    AgendaPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { NewsProvider } from '../providers/news/news';
     HomePage,
     ListPage,
     NewsPage,
-    ModalPage
+    ModalPage, 
+    AgendaPage
   ],
   providers: [
     StatusBar,
