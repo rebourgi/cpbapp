@@ -17,7 +17,7 @@ node {
         		sh 'npm install'
         		sh 'ionic cordova platform add android'
         		//sh 'cp signing/* platforms/android/ && ionic cordova build android --release'
-        		sh 'ionic cordova build android --release --buildConfig=build.json'
+        		sh 'ionic cordova build android --release --buildConfig=_build.json'
         	}
         	archiveArtifacts artifacts: 'platforms/android/build/outputs/apk/*.apk'
     	}
