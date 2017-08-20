@@ -7,7 +7,6 @@ import { AppVersion } from '@ionic-native/app-version';
 import { NewsPage } from '../pages/news/news';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { ModalPage } from '../pages/modal/modal';
 import { AgendaPage } from '../pages/agenda/agenda';
 
 @Component({

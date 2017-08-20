@@ -16,7 +16,7 @@ node {
 				sh 'apt-get -y install gradle'
         		sh 'npm install'
         		sh 'ionic cordova platform add android'
-        		sh 'ionic cordova build android'
+        		sh 'cp signing/* platforms/android/ && ionic cordova build android --release'
         	}
         	archiveArtifacts artifacts: 'platforms/android/build/outputs/apk/*.apk'
     	}
