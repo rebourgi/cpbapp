@@ -1,9 +1,10 @@
 {
      "android": {
          "release": {
-             "keystore": "cpbtt.keystore",
+             "keystore": "resources/cpbtt.keystore",
              "storePassword": "cpbrennestt",
-             "alias": "cpbtt"
-         }
+             "alias": "cpbtt",
+             "password" : "cpbrennestt"
+		}
      }
 }
