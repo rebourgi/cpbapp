@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { Calendar } from '@ionic-native/calendar';
 
 import { HttpModule } from '@angular/http';
 
@@ -44,7 +45,8 @@ import { AppVersion } from '@ionic-native/app-version';
     AppVersion,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    NewsProvider
+    NewsProvider,
+    Calendar
   ]
 })
 export class AppModule {}

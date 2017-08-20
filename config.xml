@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>CPB TT</name>
+<widget id="fr.cpbrennestt.cpbapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>CPB Rennes TT</name>
     <description>App mobiel for CPB Rennes TT</description>
     <author email="remi.bourgin@gmail.com" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -85,4 +85,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <engine name="android" spec="~6.1.2" />
     <plugin name="cordova-plugin-app-version" spec="~0.1.9" />
+    <plugin name="cordova-plugin-calendar" spec="^4.6.0" />
 </widget>
