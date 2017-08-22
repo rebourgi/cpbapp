@@ -14,7 +14,7 @@ constructor(public navCtrl: NavController, public viewCtrl : ViewController ,pub
 }
 
 openCalendar(){
-    this.calendar.createCalendar(new Date()).then(
+    this.calendar.openCalendar(new Date()).then(
         (msg) => { console.log(msg); },
         (err) => { console.log(err); }
     );
