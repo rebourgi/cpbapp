@@ -7,15 +7,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
 
-<ion-card>
+<ion-content class="rencontre-list">
 
-</ion-card>
+    <ion-list>
 
+        <ion-item-sliding *ngFor="let rencontre of rencontresItems">
+            <button ion-item >
+                <h2>Poule {{rencontre.poule}} - Tour n° {{rencontre.tour}} du {{rencontre.date}} </h2>
+                <p>{{rencontre.equipe1}} - {{ rencontre.equipe2 }}</p>
+                <p> à {{ rencontre.salle }}</p>
+            </button>
+            <ion-item-options>
+                <button danger (click)="deleteItem(rencontre)">Delete</button>
+            </ion-item-options>
+        </ion-item-sliding>
 
+    </ion-list>
 
-
+    <div *ngIf="viewMode==='map'" style="width:100%;height:100%;" id="map"></div>
 
 </ion-content>
+
 			
