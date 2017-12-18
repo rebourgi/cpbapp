@@ -11,6 +11,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ModalPage } from '../pages/modal/modal';
 import { AgendaPage } from '../pages/agenda/agenda';
+import { PoulePage } from '../pages/poule/poule';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +26,8 @@ import { AppVersion } from '@ionic-native/app-version';
     ListPage,
     NewsPage, 
     ModalPage,
-    AgendaPage
+    AgendaPage,
+    PoulePage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { AppVersion } from '@ionic-native/app-version';
     ListPage,
     NewsPage,
     ModalPage, 
-    AgendaPage
+    AgendaPage,
+    PoulePage
   ],
   providers: [
     StatusBar,
