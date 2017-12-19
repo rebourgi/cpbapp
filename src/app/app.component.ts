@@ -8,6 +8,13 @@ import { NewsPage } from '../pages/news/news';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AgendaPage } from '../pages/agenda/agenda';
+import { PoulePage } from '../pages/poule/poule';
+
+export interface MenuItem {
+    title: string;
+    component: any;
+    icon: string;
+}
 
 @Component({
   templateUrl: 'app.html'
@@ -19,19 +26,27 @@ export class MyApp {
   
   version: any;
 
-  pages: Array<{title: string, component: any}>;
-
+  appMenuItems: Array<MenuItem>;
+  diversMenuItems: Array<MenuItem>;
+    
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public appVersion: AppVersion) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'News', component: NewsPage },
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Agenda', component: AgendaPage }
-    ];
+    // used for an example of ngFor and navigation   
     
+        this.appMenuItems = [
+            {title: 'Accueil', component: NewsPage, icon: 'home'},
+            {title: 'Competitions', component: PoulePage, icon: 'trophy'},
+            {title: 'Agenda', component: AgendaPage, icon: 'calendar'},
+            {title: 'Mon espace', component: HomePage, icon: 'ios-contact'},
+        ];
+
+
+        this.diversMenuItems = [
+        	{title: 'Galerie', component: ListPage, icon: 'images'},
+        	{title: 'Partenaires', component: ListPage, icon: 'people'},
+            {title: 'A propos', component: ListPage, icon: 'information-circle'},
+        ];
   }
 
   initializeApp() {
