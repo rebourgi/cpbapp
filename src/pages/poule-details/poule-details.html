@@ -18,12 +18,12 @@
             <ion-item>
                 <ion-icon item-left name="people"></ion-icon>
                 <h3>Membres {{rencontre.equipe1}}</h3>
-                <ion-note item-right>voir details</ion-note>
+                <ion-icon item-right name="arrow-dropright"></ion-icon>
             </ion-item>
             <ion-item>
                 <ion-icon item-left name="people"></ion-icon>
                 <h3>Membres {{rencontre.equipe2}}</h3>
-                <ion-note item-right>voir details</ion-note>
+                <ion-icon item-right name="arrow-dropright"></ion-icon>
             </ion-item>
         </ion-list>
 
@@ -32,7 +32,7 @@
                 <ion-icon item-left name="pin"></ion-icon>
                 <h3>{{rencontre.salle}}</h3>
             </ion-item>
-            <button ion-button icon-left (click)="goMap(rencontre.salle)" clear item-right>
+            <button ion-button icon-left clear item-right>
                 <ion-icon name="map"></ion-icon>
                 Itineraire
             </button>
