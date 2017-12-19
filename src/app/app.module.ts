@@ -12,12 +12,15 @@ import { ListPage } from '../pages/list/list';
 import { ModalPage } from '../pages/modal/modal';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { PoulePage } from '../pages/poule/poule';
+import { PouleDetailsPage } from '../pages/poule-details/poule-details';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NewsProvider } from '../providers/news/news';
 import { AppVersion } from '@ionic-native/app-version';
+import {RencontresService} from "../providers/rencontres/rencontres-service";
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { AppVersion } from '@ionic-native/app-version';
     NewsPage, 
     ModalPage,
     AgendaPage,
-    PoulePage
+    PoulePage,
+    PouleDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { AppVersion } from '@ionic-native/app-version';
     NewsPage,
     ModalPage, 
     AgendaPage,
-    PoulePage
+    PoulePage,
+    PouleDetailsPage
   ],
   providers: [
     StatusBar,
@@ -50,7 +55,8 @@ import { AppVersion } from '@ionic-native/app-version';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NewsProvider,
-    Calendar
+    Calendar,
+    RencontresService
   ]
 })
 export class AppModule {}
