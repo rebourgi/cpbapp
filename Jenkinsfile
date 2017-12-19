@@ -20,9 +20,9 @@ node {
 				sh 'mkdir /opt/gradle && unzip -d /opt/gradle gradle-3.4.1-bin.zip'
 				sh 'export PATH=$PATH:/opt/gradle/gradle-3.4.1/bin && gradle -v'
         		sh 'npm install'
-        		sh 'ionic cordova platform add android'
+        		sh 'export PATH=$PATH:/opt/gradle/gradle-3.4.1/bin && ionic cordova platform add android'
         		//sh 'cp signing/* platforms/android/ && ionic cordova build android --release'
-        		sh 'ionic cordova build android --release --buildConfig=build.json'
+        		sh 'export PATH=$PATH:/opt/gradle/gradle-3.4.1/bin && ionic cordova build android --release --buildConfig=build.json'
         	}
         	archiveArtifacts artifacts: 'platforms/android/build/outputs/apk/*.apk'
     	}
