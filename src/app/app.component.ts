@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { PoulePage } from '../pages/poule/poule';
+import { PouleDetailsPage } from '../pages/poule-details/poule-details';
+
 
 export interface MenuItem {
     title: string;

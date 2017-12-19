@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>D&eacute;tail rencontre</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-card *ngIf="rencontre.id">
+        <ion-card-content>
+            <h2 class="card-title"> {{rencontre.equipe1}} Vs {{rencontre.equipe2}} </h2>
+            <p>Poule {{rencontre.poule}} tour {{rencontre.tour}}, {{rencontre.date}}</p>
+        </ion-card-content>
+        <ion-list>
+            <ion-item>
+                <ion-icon item-left name="people"></ion-icon>
+                <h3>Membres {{rencontre.equipe1}}</h3>
+                <ion-icon item-right name="arrow-dropright"></ion-icon>
+            </ion-item>
+            <ion-item>
+                <ion-icon item-left name="people"></ion-icon>
+                <h3>Membres {{rencontre.equipe2}}</h3>
+                <ion-icon item-right name="arrow-dropright"></ion-icon>
+            </ion-item>
+        </ion-list>
+
+        <ion-item>
+            <ion-item>
+                <ion-icon item-left name="pin"></ion-icon>
+                <h3>{{rencontre.salle}}</h3>
+            </ion-item>
+            <button ion-button icon-left clear item-right>
+                <ion-icon name="map"></ion-icon>
+                Itineraire
+            </button>
+        </ion-item>
+
+    </ion-card>
+</ion-content>
+			

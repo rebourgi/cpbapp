@@ -1,32 +1,30 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Config, NavController } from 'ionic-angular';
 
-export interface rencontreItem {
-    poule : string;
-    tour : string;
-    date: string;
-    equipe1: string;
-    equipe2: string;
-    salle: string;
+import { PouleDetailsPage } from '../poule-details/poule-details';
+import {RencontresService} from '../../providers/rencontres/rencontres-service';
 
-}
+
 
 @Component({
   selector: 'page-poule',
   templateUrl: 'poule.html'
 })
 export class PoulePage {
-
-  rencontresItems: Array<rencontreItem>;
-
-  constructor(public navCtrl: NavController) {
-
-        this.rencontresItems = [
-            {poule: 'A', tour:'1', date:'03/12/2017', equipe1: 'Rennes CBP', equipe2: 'Quimper CTT' , salle: 'Rennes'},
-            {poule: 'A', tour:'2', date:'10/12/2017', equipe1: 'Rennes CBP', equipe2: 'Thorigne TT' , salle: 'Quimper'},
-            {poule: 'A', tour:'3', date:'15/12/2017', equipe1: 'Rennes CBP', equipe2: 'Landerneau TT' , salle: 'Torigne'},
-
-        ];
-  }
+  rencontres: Array<any>;
+  
+   constructor(public navCtrl: NavController, public service: RencontresService, public config: Config) {
+        this.findAll();
+    }
+  
+   openPouleDetail(rencontre: any) {
+        this.navCtrl.push(PouleDetailsPage, rencontre);
+    }
+    
+   findAll() {
+        this.service.findAll()
+            .then(data => this.rencontres = data)
+            .catch(error => alert(error));
+    }
 
 }
