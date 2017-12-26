@@ -6,7 +6,6 @@ node {
         }
     }
     stage('Build') {
-    	env.NODE_PATH = tool 'NodeJS7'
 		withDockerContainer(image : 'uber/android-build-environment', args: " -u root ") {
 			sh 'rm -Rf plugins platforms node_modules'
 			sh 'mkdir "$ANDROID_HOME/licenses"'
