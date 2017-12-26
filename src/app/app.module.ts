@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 import { HttpModule } from '@angular/http';
 
@@ -56,7 +57,8 @@ import {RencontresService} from "../providers/rencontres/rencontres-service";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NewsProvider,
     Calendar,
-    RencontresService
+    RencontresService,
+    GoogleMaps
   ]
 })
 export class AppModule {}

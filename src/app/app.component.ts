@@ -40,7 +40,7 @@ export class MyApp {
             {title: 'Accueil', component: NewsPage, icon: 'home'},
             {title: 'Competitions', component: PoulePage, icon: 'trophy'},
             {title: 'Agenda', component: AgendaPage, icon: 'calendar'},
-            {title: 'Mon espace', component: HomePage, icon: 'ios-contact'},
+            {title: 'Compte', component: HomePage, icon: 'ios-contact'},
         ];
 
 
