@@ -8,6 +8,7 @@ node {
     stage('Build') {
     	env.NODE_PATH = tool 'NodeJS7'
 		withDockerContainer(image : 'uber/android-build-environment', args: " -u root ") {
+			sh 'rm -Rf plugins platforms node_modules'
 			sh 'mkdir "$ANDROID_HOME/licenses"'
 			sh 'echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"'
 			sh 'echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e" >> /usr/local/android-sdk/licenses/android-sdk-license'
