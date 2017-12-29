@@ -17,7 +17,7 @@
         <ion-list>
             <ion-item>
                 <ion-icon item-left name="people"></ion-icon>
-                <h3>Membres {{rencontre.equipe1}}</h3>
+                <h3>Equipe {{rencontre.equipe1}}</h3>
                 <ion-icon item-right name="arrow-dropright"></ion-icon>
             </ion-item>
             <ion-item>
@@ -25,19 +25,18 @@
                 <h3>Equipe {{rencontre.equipe2}}</h3>
                 <ion-icon item-right name="arrow-dropright"></ion-icon>
             </ion-item>
-        </ion-list>
-
-        <ion-item>
             <ion-item>
                 <ion-icon item-left name="pin"></ion-icon>
                 <h3>{{rencontre.salle}}</h3>
             </ion-item>
-        </ion-item>
-
-        <ion-segment-button  (ionSelect)="ionViewDidLoad()">
-          <ion-icon name="map"></ion-icon>
-        </ion-segment-button>
-
-    </ion-card>
+        </ion-list>
+        </ion-card>
+        
+		<ion-content >
+		  <div id="map_canvas">
+		    <button ion-button (click)="onButtonClick($event)"><ion-icon name="map"></ion-icon></button>
+		  </div>
+		</ion-content>
+    
 </ion-content>
 			
