@@ -7,7 +7,6 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
     <ion-card *ngIf="rencontre.id">
         <ion-card-content>
@@ -15,6 +14,9 @@
             <p>Poule {{rencontre.poule}} tour {{rencontre.tour}}, {{rencontre.date}}</p>
         </ion-card-content>
         <ion-list>
+            <ion-item>
+				<div style="height: 300px" id="map_canvas"></div>
+            </ion-item>
             <ion-item>
                 <ion-icon item-left name="people"></ion-icon>
                 <h3>Equipe {{rencontre.equipe1}}</h3>
@@ -28,15 +30,9 @@
             <ion-item>
                 <ion-icon item-left name="pin"></ion-icon>
                 <h3>{{rencontre.salle}}</h3>
+                <button ion-button item-right (click)="go()"><ion-icon name="navigate"></ion-icon></button>
             </ion-item>
         </ion-list>
-        </ion-card>
-        
-		<ion-content >
-		  <div id="map_canvas">
-		    <button ion-button (click)="onButtonClick($event)"><ion-icon name="map"></ion-icon></button>
-		  </div>
-		</ion-content>
-    
+	</ion-card>
 </ion-content>
 			

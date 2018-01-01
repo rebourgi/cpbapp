@@ -12,6 +12,7 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.2",
     "@angular/animations": "4.3.5",
     "@angular/common": "4.3.5",
     "@angular/compiler": "4.3.5",
@@ -21,33 +22,43 @@
     "@angular/http": "4.3.5",
     "@angular/platform-browser": "4.3.5",
     "@angular/platform-browser-dynamic": "4.3.5",
+    "@ionic-native/app-availability": "^4.5.2",
     "@ionic-native/app-version": "4.1.0",
     "@ionic-native/calendar": "4.1.0",
     "@ionic-native/core": "4.1.0",
+    "@ionic-native/geolocation": "^4.5.2",
     "@ionic-native/google-maps": "^4.5.2",
+    "@ionic-native/launch-navigator": "^4.5.2",
     "@ionic-native/splash-screen": "4.1.0",
     "@ionic-native/status-bar": "4.1.0",
     "@ionic/storage": "2.0.1",
+    "@types/googlemaps": "^3.30.3",
     "cordova-android": "6.2.3",
     "cordova-browser": "~5.0.2",
+    "cordova-plugin-actionsheet": "^2.3.3",
     "cordova-plugin-app-version": "^0.1.9",
+    "cordova-plugin-appavailability": "^0.4.2",
     "cordova-plugin-calendar": "^4.6.0",
-    "cordova-plugin-compat": "^1.0.0",
-    "cordova-plugin-console": "^1.0.5",
-    "cordova-plugin-device": "^1.1.4",
-    "cordova-plugin-googlemaps": "^2.1.1",
-    "cordova-plugin-splashscreen": "^4.0.1",
-    "cordova-plugin-statusbar": "^2.2.2",
-    "cordova-plugin-whitelist": "^1.3.1",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-console": "^1.1.0",
+    "cordova-plugin-device": "^1.1.7",
+    "cordova-plugin-dialogs": "^2.0.0",
+    "cordova-plugin-geolocation": "^2.4.3",
+    "cordova-plugin-googlemaps": "2.1.1",
+    "cordova-plugin-splashscreen": "^4.1.0",
+    "cordova-plugin-statusbar": "^2.4.0",
+    "cordova-plugin-whitelist": "^1.3.3",
     "ionic-angular": "3.3.0",
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "rxjs": "5.1.1",
     "sw-toolbox": "3.6.0",
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "^4.1.2",
     "zone.js": "0.8.11"
   },
   "devDependencies": {
     "@ionic/app-scripts": "2.1.4",
+    "@types/googlemaps": "^3.30.3",
     "typescript": "2.3.3"
   },
   "description": "Mobile App for CPB TT",
@@ -68,7 +79,11 @@
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyBmsSb3-IG6Jk_XbF4snF9_yQMv_L3ijz0",
         "API_KEY_FOR_IOS": "AIzaSyBmsSb3-IG6Jk_XbF4snF9_yQMv_L3ijz0"
-      }
+      },
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-appavailability": {},
+      "uk.co.workingedge.phonegap.plugin.launchnavigator": {},
+      "cordova-plugin-ionic-webview": {}
     }
   }
 }

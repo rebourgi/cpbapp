@@ -8,6 +8,7 @@
     <allow-navigation href="http://ionic.local/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-intent href="file:*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -78,8 +79,6 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
     <preference name="android-targetSdkVersion" value="25" />
-    <engine name="android" spec="6.2.3" />
-    <engine name="browser" spec="~5.0.2" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.1" />
@@ -88,8 +87,14 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
     <plugin name="cordova-plugin-calendar" spec="^4.6.0" />
-    <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
+    <plugin name="cordova-plugin-googlemaps" spec="2.1.1">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyBmsSb3-IG6Jk_XbF4snF9_yQMv_L3ijz0" />
         <variable name="API_KEY_FOR_IOS" value="AIzaSyBmsSb3-IG6Jk_XbF4snF9_yQMv_L3ijz0" />
     </plugin>
+    <engine name="browser" spec="~5.0.2" />
+    <plugin name="cordova-plugin-geolocation" spec="^2.4.3" />
+    <plugin name="cordova-plugin-appavailability" spec="^0.4.2" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^4.1.2" />
+    <engine name="android" spec="~6.2.3" />
+    <allow-navigation href="http://192.168.1.25:8100" />
 </widget>

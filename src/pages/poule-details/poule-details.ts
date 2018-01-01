@@ -1,10 +1,18 @@
 import {Component} from '@angular/core';
-import {ActionSheetController, NavController, NavParams, Platform, ToastController} from 'ionic-angular';
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, Marker, GoogleMapsAnimation, MyLocation } from '@ionic-native/google-maps';
+import {ActionSheetController, NavController, NavParams, Platform, ToastController, LoadingController} from 'ionic-angular';
+import {RencontresService} from '../../providers/rencontres/rencontres-service';
+import {Geolocation} from '@ionic-native/geolocation';
+import {LaunchNavigator} from '@ionic-native/launch-navigator';
+import {MapsAPILoader} from '@agm/core';
 
-import { RencontresService } from '../../providers/rencontres/rencontres-service';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  GoogleMapOptions
+} from '@ionic-native/google-maps';
 
-
+declare var google: any;
 
 @Component({
   selector: 'page-poule-details',
@@ -15,29 +23,60 @@ export class PouleDetailsPage {
   rencontre: any;
   mapReady: boolean = false;
   map: GoogleMap;
-  
-        constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public navParams: NavParams, public rencontreService: RencontresService, public toastCtrl: ToastController, 
-    		private googleMaps: GoogleMaps, public platform: Platform) {
-	        this.rencontre = this.navParams.data;
-	        rencontreService.findById(this.rencontre.id).then(
-	            rencontre => this.rencontre = rencontre
-            );
-    }
-    
 
-  ionViewDidLoad() {
-    this.loadMap();
+  latAgent: number = 0;
+  lngAgent: number = 0;
+  latClient: number = 0;
+  lngClient: number = 0;
+  loader: any;
+
+  constructor(public actionSheetCtrl: ActionSheetController, public navCtrl: NavController, public navParams: NavParams, private mapsAPILoader: MapsAPILoader,
+    public rencontreService: RencontresService, public toastCtrl: ToastController, public loadingCtrl: LoadingController,
+    public platform: Platform, private geolocation: Geolocation, private launchNavigator: LaunchNavigator) {
+    this.loader = this.loadingCtrl.create({
+      content: "Loading...",
+    });
+    this.loader.present();
+    this.rencontre = this.navParams.data;
+    rencontreService.findById(this.rencontre.id).then(
+      rencontre => this.rencontre = rencontre
+    );
+    platform.ready().then(() => {
+      this.geolocation.getCurrentPosition().then((resp) => {
+        this.latAgent = resp.coords.latitude;
+        this.lngAgent = resp.coords.longitude;
+      });
+
+      let watch = this.geolocation.watchPosition();
+      watch.subscribe((resp) => {
+        this.latAgent = resp.coords.latitude;
+        this.lngAgent = resp.coords.longitude;
+      });
+    });
   }
 
-   loadMap() {
+  ionViewDidLoad() {
+    this.mapsAPILoader.load().then(() => {
+      let geocoder = new google.maps.Geocoder();
+      geocoder.geocode({'address': '319 Route de Pleumeur-Bodou, 22700 PERROS GUIREC'}, (results, status) => {
+        if (status == google.maps.GeocoderStatus.OK) {
+          this.latClient = results[0].geometry.location.lat();
+          this.lngClient = results[0].geometry.location.lng();
+          this.loadMap();
+        }
+      });
+    });
+  }
 
+
+  loadMap() {
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
-          lat: 43.0741904,
-          lng: -89.3809802
+          lat: this.latAgent,
+          lng: this.lngAgent
         },
-        zoom: 18,
+        zoom: 10,
         tilt: 30
       }
     };
@@ -47,62 +86,33 @@ export class PouleDetailsPage {
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
-        console.log('Map is ready!');
-        this.mapReady = true;
 
         // Now you can use all methods safely.
         this.map.addMarker({
-            title: 'Ionic',
-            icon: 'blue',
-            animation: 'DROP',
-            position: {
-              lat: 43.0741904,
-              lng: -89.3809802
-            }
-          })
-          .then(marker => {
-            marker.on(GoogleMapsEvent.MARKER_CLICK)
-              .subscribe(() => {
-                alert('clicked');
-              });
-          });
-
-      });
-  }
-  onButtonClick() {
-    if (!this.mapReady) {
-      this.showToast('map is not ready yet. Please try again.');
-      return;
-    }
-    this.map.clear();
-
-    // Get the location of you
-    this.map.getMyLocation()
-      .then((location: MyLocation) => {
-        console.log(JSON.stringify(location, null ,2));
-
-        // Move the map camera to the location with animation
-        return this.map.animateCamera({
-          target: location.latLng,
-          zoom: 17,
-          tilt: 30
-        }).then(() => {
-          // add a marker
-          return this.map.addMarker({
-            title: '@ionic-native/google-maps plugin!',
-            snippet: 'This plugin is awesome!',
-            position: location.latLng,
-            animation: GoogleMapsAnimation.BOUNCE
-          });
-        })
-      }).then((marker: Marker) => {
-        // show the infoWindow
-        marker.showInfoWindow();
-
-        // If clicked it, display the alert
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          this.showToast('clicked!');
+          title: 'Ma position',
+          icon: 'blue',
+          animation: 'DROP',
+          position: {
+            lat: this.latAgent,
+            lng: this.lngAgent
+          }
         });
+
+        // Now you can use all methods safely.
+        this.map.addMarker({
+          title: 'Ionic',
+          icon: 'red',
+          animation: 'DROP',
+          position: {
+            lat: this.latClient,
+            lng: this.lngClient
+          }
+        });
+        this.loader.dismiss();
+      },
+      (error) => {
+        this.showToast('error ' + error);
+        this.loader.dismiss();
       });
   }
 
@@ -115,4 +125,26 @@ export class PouleDetailsPage {
 
     toast.present(toast);
   }
+
+  go() {
+    this.launchNavigator.navigate([this.latClient, this.lngClient], {
+      start: this.latAgent + ", " + this.lngAgent,
+      appSelection: {
+        dialogHeaderText: 'Y aller avec ...',
+        cancelButtonText: 'Annuler',
+        rememberChoice: {
+          prompt: {
+            headerText: 'Se souvenir de votre choix ?',
+            bodyText: 'Utiliser la même application la prochaine fois ?',
+            yesButtonText: 'Oui',
+            noButtonText: 'Non'
+          }
+        }
+      }
+    }).then(
+      success => console.log('Launched navigator'),
+      error => this.showToast('Error launching navigator ' + error)
+      );
+  }
+
 }

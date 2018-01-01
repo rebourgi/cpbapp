@@ -22,6 +22,11 @@ import { NewsProvider } from '../providers/news/news';
 import { AppVersion } from '@ionic-native/app-version';
 import {RencontresService} from "../providers/rencontres/rencontres-service";
 
+import { AgmCoreModule, NoOpMapsAPILoader, MapsAPILoader } from '@agm/core';
+import { Geolocation } from '@ionic-native/geolocation';
+import { AppAvailability } from '@ionic-native/app-availability';
+
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,10 @@ import {RencontresService} from "../providers/rencontres/rencontres-service";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBmsSb3-IG6Jk_XbF4snF9_yQMv_L3ijz0'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,7 +66,11 @@ import {RencontresService} from "../providers/rencontres/rencontres-service";
     NewsProvider,
     Calendar,
     RencontresService,
-    GoogleMaps
+    GoogleMaps,
+    Geolocation,
+    {provide: MapsAPILoader, useClass: NoOpMapsAPILoader},
+    AppAvailability,
+    LaunchNavigator
   ]
 })
 export class AppModule {}
