@@ -18,7 +18,7 @@ node {
 			sh 'apt-get -y install nodejs'
 			sh 'npm install -g ionic cordova'
 			sh 'npm install typings --global'
-			sh 'typings install dt~google.maps --global --save'
+			//sh 'typings install dt~google.maps --global --save'
     		sh 'npm install'
     		sh 'ionic cordova platform add android'
     		//sh 'cp signing/* platforms/android/ && ionic cordova build android --release'
